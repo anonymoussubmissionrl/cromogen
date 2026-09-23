@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Anonymous page for double-blind review: keep it out of search results. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>CroMoGen</title>
+<meta name="description" content="CroMoGen: cross-morphology demonstration retargeting for mobile manipulation. Anonymous project page for double-blind review.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23363636'/%3E%3Cpath d='M7 20c5-9 13-9 18 0' stroke='%23e8833a' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<!-- Layout follows the Nerfies / Academic Project Page template, rewritten as
+     one self-contained file: no web fonts, CDNs, analytics or cookies. -->
+<style>
+  :root {
+    --text: rgba(0, 0, 0, 0.7);
+    --title: #363636;
+    --muted: #7a7a7a;
+    --light: #f5f5f5;
+    --rule: #dbdbdb;
+    --link: #3273dc;
+    --btn: #363636;
+    --ok: #2f8a55;
+    --bad: #c23b32;
+    --container: 960px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; background: #fff; color: var(--text);
+    font: 16px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font: 0.875em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--light); color: #da1039; padding: 0.1em 0.35em; border-radius: 3px; }
+  .light code { background: #fff; }
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 16px; }
+  .display { font-family: "Google Sans", "Product Sans", "Noto Sans", "Helvetica Neue", Arial, sans-serif; }
+
+  /* ---- hero ---- */
+  .hero { text-align: center; padding: 48px 0 24px; }
+  .pub-title { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.2; font-weight: 400; color: var(--title); margin: 0 auto 22px; max-width: 820px; text-wrap: balance; }
+  .pub-title b { font-weight: 700; }
+  .authors { font-size: 1.15rem; margin: 0 0 4px; color: var(--link); }
+  .affil { font-size: 1.05rem; color: var(--title); margin: 0 0 20px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px; background: var(--btn); color: #fff;
+    border-radius: 999px; padding: 7px 20px; font-size: 1rem; line-height: 1.5;
+  }
+  .btn:hover { background: #292929; text-decoration: none; }
+  .btn svg { width: 1em; height: 1em; fill: currentColor; flex: none; }
+
+  /* ---- sections ---- */
+  section.block { padding: 48px 0; }
+  section.light { background: var(--light); }
+  h2.title { font-size: 2rem; font-weight: 600; color: var(--title); text-align: center; margin: 0 0 24px; line-height: 1.125; }
+  h3.sub { font-size: 1.25rem; font-weight: 600; color: var(--title); text-align: center; margin: 36px 0 14px; }
+  .content p { text-align: justify; margin: 0 0 16px; hyphens: auto; }
+  .content p:last-child { margin-bottom: 0; }
+  .narrow { max-width: 820px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 600px) { .content p, .caption.left { text-align: left; } }
+
+  /* ---- media ---- */
+  .teaser { padding: 8px 0 32px; }
+  img.fig, video { display: block; width: 100%; height: auto; border-radius: 6px; background: #eee; }
+  .caption { font-size: 1rem; text-align: center; color: var(--text); margin: 14px auto 0; max-width: 860px; }
+  .caption.left { text-align: justify; }
+  .caption b { color: var(--title); }
+
+  .grid { display: grid; gap: 28px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .vid h4 { margin: 0 0 8px; font-size: 1rem; font-weight: 700; color: var(--title); text-align: center; }
+  .vid h4 .ok { color: var(--ok); }
+  .vid h4 .bad { color: var(--bad); }
+  .vid video { box-shadow: 0 2px 10px rgba(10, 10, 10, 0.12); }
+  .vid p { font-size: 0.9rem; margin: 8px 0 0; text-align: center; }
+
+  .legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; font-size: 0.93rem; margin: 18px auto 28px; max-width: 820px; }
+  .legend b { color: var(--title); }
+  @media (max-width: 560px) { .legend { grid-template-columns: 1fr; } }
+
+  /* ---- hardware outcome table ---- */
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.outcomes { border-collapse: collapse; margin: 0 auto; font-size: 0.95rem; background: #fff; border-radius: 6px; }
+  .outcomes th, .outcomes td { padding: 8px 10px; text-align: center; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  .outcomes tr:last-child th, .outcomes tr:last-child td { border-bottom: 0; }
+  .outcomes thead th { font-weight: 600; color: var(--muted); font-size: 0.85rem; }
+  .outcomes tbody th { text-align: left; color: var(--title); }
+  .outcomes .sum { font-weight: 700; color: var(--title); }
+  .mk { font-weight: 700; }
+  .mk.ok { color: var(--ok); }
+  .mk.bad { color: var(--bad); }
+
+  footer { padding: 32px 0 48px; font-size: 0.875rem; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- =================================================================== hero -->
+<header class="hero">
+  <div class="container">
+    <h1 class="pub-title display"><b>CroMoGen:</b><br>Cross-Morphology Demonstration Retargeting for Mobile Manipulation</h1>
+    <p class="authors display">Anonymous Authors</p>
+    <p class="affil display">Paper under double-blind review</p>
+    <nav class="links" aria-label="Sections">
+      <a class="btn" href="#real"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Real-robot videos</a>
+      <a class="btn" href="#sim"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zm-2 13h20v2H2z"/></svg>Simulation</a>
+      <a class="btn" href="#method"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 4h8v2h-8zm0-4h8v2h-8z"/></svg>Method</a>
+      <a class="btn" href="#tasks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v2H3zm0 7h18v2H3zm0 7h18v2H3z"/></svg>Tasks</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================================================================= teaser -->
+<section class="teaser">
+  <div class="container">
+    <img class="fig" src="media/img/fig_problem.jpg" width="1375" height="558"
+         alt="A human motion-capture demonstration of moving a cup is retargeted by CroMoGen's trace, ground, search and certify stages to Spot, Panda-Omron and Unitree G1 in simulation, and to a physical Spot.">
+    <p class="caption"><b>CroMoGen</b> retargets a single human demonstration to robots with different arms, grippers and bases: here
+      a ParaHome <code>move_cup</code> demonstration to Spot, Panda-Omron and Unitree&nbsp;G1 in simulation, and a physical Spot executing
+      another <code>move_cup</code> segment. Orange: the cup from grasp to release. Purple: the robot base.</p>
+  </div>
+</section>
+
+<!-- =============================================================== abstract -->
+<section class="block light">
+  <div class="container">
+    <h2 class="title display">Abstract</h2>
+    <div class="content narrow">
+      <p>Demonstration synthesis scales imitation learning by adapting a few source demonstrations to new scenes, but it assumes that the
+        source and the target robot share a morphology. When they do not, replayed end-effector motion is often unreachable or in collision
+        for the target, and mobile manipulation makes this worse because base placement and arm motion must stay coordinated for the whole
+        time the robot is in contact with the object. We present CroMoGen, a planning framework that retargets mobile-manipulation
+        demonstrations from humans or robots to robots with different arms, grippers and bases, without paired source&ndash;target data or
+        a learned retargeting model. CroMoGen treats a demonstration as a record of what happened to the object rather than as a motion to
+        copy: it regenerates the in-contact end-effector reference from the demonstrated object trajectory and a grasp the target gripper
+        can execute, then selects base poses and arm configurations jointly over the entire manipulation segment under kinematic,
+        whole-body collision and base-motion constraints. We evaluate human-to-robot transfer from ParaHome motion capture and
+        robot-to-robot transfer in RoboCasa on three morphologically distinct targets &mdash; a legged manipulator (Spot), a wheeled
+        manipulator (Panda-Omron) and a humanoid (Unitree&nbsp;G1) &mdash; against MimicGen, WBCMimicGen and MoMaGen, and execute generated
+        demonstrations on a physical Spot.</p>
+      <!-- Add the headline human-to-robot and robot-to-robot numbers here once they are final in the paper. -->
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ method -->
+<section class="block" id="method">
+  <div class="container">
+    <h2 class="title display">Overview</h2>
+    <div class="content narrow">
+      <p>CroMoGen treats a demonstration as a specification of the <em>interaction</em> &mdash; which object moves, along which path, and
+        when contact begins and ends &mdash; rather than as a limb motion to reproduce. <b>(1) Trace extraction</b> detects contact from its
+        effect on the object: grasp and release are where the object's speed rises above and falls below a threshold.
+        <b>(2) Embodiment grounding</b> replaces the demonstrator's hand with a grasp from the target robot's own screened grasp set and
+        locks it to the demonstrated object trajectory during contact, keeping the free-space hand motion only as a shape prior.
+        <b>(3) Coupled whole-body search</b> picks base poses and arm configurations jointly for the whole segment with an exact layered
+        dynamic program over base cells and inverse-kinematics branches, in which consecutive base poses must be reachable in the time the
+        demonstration allots. <b>(4) Certification and execution</b> verifies arm collisions lazily and repairs them with scene-aware
+        inverse kinematics, certifies base motion between frames as collision-free, and keeps a retimed trajectory only if it completes
+        the task in simulation. No paired source&ndash;target demonstrations, joint-level correspondence or learned retargeting policy is
+        needed.</p>
+    </div>
+    <img class="fig" src="media/img/fig_method.png" width="1375" height="522" loading="lazy" style="margin-top:28px"
+         alt="The four stages of CroMoGen: trace extraction from the human demonstration, embodiment grounding with a target-robot grasp, coupled whole-body search as a layered dynamic program over base poses and IK branches, and certification and execution.">
+  </div>
+</section>
+
+<!-- ============================================================ real robot -->
+<section class="block light" id="real">
+  <div class="container">
+    <h2 class="title display">Physical Execution on Spot</h2>
+    <div class="content narrow">
+      <p>We executed 16 <code>move_cup</code> trajectories, retargeted from human demonstrations, on a physical Spot: eight whose
+        simulated execution succeeded and eight whose simulated execution failed. <b>Seven of the first group and five of the second
+        succeeded on the robot.</b> Below are all eight runs of the first group, uncut, including its one failure.</p>
+    </div>
+    <div class="legend">
+      <div><b>Left:</b> overhead and side lab cameras.</div>
+      <div><b>Top right:</b> the same trajectory executed in simulation.</div>
+      <div><b>Bottom right:</b> top-down map of the planned, simulated and real base and hand paths.</div>
+      <div><b>Overlay:</b> replay time and gripper opening.</div>
+    </div>
+
+    <div class="grid">
+      <div class="vid">
+        <h4>Segment 20 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg20.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg20.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 67 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg67.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg67.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 117 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg117.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg117.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 161 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg161.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg161.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 33 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg33.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg33.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 47 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg47.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg47.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 114 &middot; <span class="ok">success</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg114.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg114.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Segment 62 &middot; <span class="bad">failure</span></h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/spot_real_move_cup_seg62.jpg" width="1920" height="1080">
+          <source src="media/videos/spot_real_move_cup_seg62.mp4" type="video/mp4">
+        </video>
+        <p>The one run that succeeded in simulation but failed on the robot: the gripper began to close while the hand was still about
+          0.1&nbsp;m short of the grasp, and tipped the cup over.</p>
+      </div>
+    </div>
+
+    <h3 class="sub display">Outcome of all 16 hardware runs</h3>
+    <div class="scroll-x">
+      <table class="outcomes">
+        <thead>
+          <tr><th>In simulation</th><th colspan="8">ParaHome <code>move_cup</code> segment &middot; outcome on the robot</th><th>On robot</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Succeeded</th>
+            <td>20 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>33 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>47 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>62 <span class="mk bad" aria-label="failure">&#10007;</span></td>
+            <td>67 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>114 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>117 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>161 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td class="sum">7 / 8</td>
+          </tr>
+          <tr>
+            <th scope="row">Failed</th>
+            <td>2 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>21 <span class="mk bad" aria-label="failure">&#10007;</span></td>
+            <td>40 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>49 <span class="mk bad" aria-label="failure">&#10007;</span></td>
+            <td>99 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>112 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td>118 <span class="mk bad" aria-label="failure">&#10007;</span></td>
+            <td>136 <span class="mk ok" aria-label="success">&#10003;</span></td>
+            <td class="sum">5 / 8</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">Hardware commands come from the same timing policy as in simulation, under hardware-specific motion limits,
+      so the simulated and physical commands are not identical.</p>
+  </div>
+</section>
+
+<!-- ============================================================ simulation -->
+<section class="block" id="sim">
+  <div class="container">
+    <h2 class="title display">Cross-Embodiment Retargeting in Simulation</h2>
+    <div class="content narrow">
+      <p>The same ParaHome <code>close_refrigerator</code> segment, recorded from a human, retargeted to a wheeled manipulator and to a
+        legged one. The door is a simulated articulation and closes only through contact. The bar at the bottom of each video marks the
+        approach (blue), contact (green) and release (orange) phases of the source demonstration.</p>
+    </div>
+    <div class="grid" style="margin-top:28px">
+      <div class="vid">
+        <h4>Panda-Omron &middot; wheeled base, 7-DoF arm with torso lift</h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/sim_close_refrigerator_panda.jpg" width="1280" height="720">
+          <source src="media/videos/sim_close_refrigerator_panda.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="vid">
+        <h4>Spot &middot; legged base, 6-DoF arm</h4>
+        <video data-autoplay muted loop playsinline controls preload="none" poster="media/img/sim_close_refrigerator_spot.jpg" width="1280" height="720">
+          <source src="media/videos/sim_close_refrigerator_spot.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= tasks -->
+<section class="block light" id="tasks">
+  <div class="container">
+    <h2 class="title display">Tasks, Robots and Sources</h2>
+    <div class="content narrow">
+      <p>Human-to-robot transfer uses four household tasks from ParaHome motion capture: <code>pick_cup</code>, <code>move_cup</code>,
+        <code>push_chair</code> and <code>close_refrigerator</code>. Robot-to-robot transfer uses the RoboCasa tasks
+        <code>CloseDrawer</code>, <code>OpenDrawer</code> and <code>PickPlaceDrawerToCounter</code>, recorded by human teleoperation of
+        Panda-Omron and retargeted to Spot and Unitree&nbsp;G1. All methods are compared in the same simulator with the same contact model.</p>
+    </div>
+    <img class="fig" src="media/img/fig_tasks.jpg" width="1375" height="951" loading="lazy" style="margin-top:28px"
+         alt="Grid of time-lapse renders: four ParaHome tasks retargeted to Spot, Panda-Omron and Unitree G1, and three RoboCasa source tasks with the target robots.">
+    <p class="caption left"><b>Top:</b> the four ParaHome tasks (columns), each retargeted from one human demonstration to the three robots
+      (rows); every cell is a successful simulated rollout, shown as a time-lapse with the object path (orange) and base path (purple).
+      <b>Bottom:</b> the three RoboCasa source tasks and the target robots in a source scene; these show sources and scenes, not CroMoGen
+      outputs.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Anonymous project page for double-blind review. It sets no cookies and loads no third-party scripts, fonts or analytics.<br>
+    Layout adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page template.
+  </div>
+</footer>
+
+<script>
+  // Play each video only while it is on screen, so the page stays light and
+  // reviewers see motion without pressing play. Skipped for reduced motion.
+  (function () {
+    var vids = document.querySelectorAll('video[data-autoplay]');
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === 'none') v.preload = 'auto';
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
+</script>
+</body>
+</html>
