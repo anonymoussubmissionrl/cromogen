@@ -128,19 +128,16 @@
   <div class="container">
     <h2 class="title display">Abstract</h2>
     <div class="content narrow">
-      <p>Demonstration synthesis scales imitation learning by adapting a few source demonstrations to new scenes, but it assumes that the
-        source and the target robot share a morphology. When they do not, replayed end-effector motion is often unreachable or in collision
-        for the target, and mobile manipulation makes this worse because base placement and arm motion must stay coordinated for the whole
-        time the robot is in contact with the object. We present CroMoGen, a planning framework that retargets mobile-manipulation
-        demonstrations from humans or robots to robots with different arms, grippers and bases, without paired source&ndash;target data or
-        a learned retargeting model. CroMoGen treats a demonstration as a record of what happened to the object rather than as a motion to
-        copy: it regenerates the in-contact end-effector reference from the demonstrated object trajectory and a grasp the target gripper
-        can execute, then selects base poses and arm configurations jointly over the entire manipulation segment under kinematic,
-        whole-body collision and base-motion constraints. We evaluate human-to-robot transfer from ParaHome motion capture and
-        robot-to-robot transfer in RoboCasa on three morphologically distinct targets &mdash; a legged manipulator (Spot), a wheeled
-        manipulator (Panda-Omron) and a humanoid (Unitree&nbsp;G1) &mdash; against MimicGen, WBCMimicGen and MoMaGen, and execute generated
-        demonstrations on a physical Spot.</p>
-      <!-- Add the headline human-to-robot and robot-to-robot numbers here once they are final in the paper. -->
+      <p>Automated demonstration synthesis for imitation learning avoids costly data collection, but transferring demonstrations across
+        morphologies often produces trajectories that the target robot cannot execute or that collide with obstacles. Mobile manipulation
+        amplifies these challenges as the planner must coordinate base placement and arm motion simultaneously. We present CroMoGen, a
+        learning-free, planning-based framework that synthesizes mobile manipulation demonstrations from different robot and human
+        sources. CroMoGen formulates synthesis as a constrained optimization problem that combines kinematic feasibility, whole-body
+        collision avoidance, and a trajectory alignment objective that preserves task-relevant object interactions. The approach adapts
+        demonstrated motions to the target morphology and environment. Further, unlike methods that decouple base placement from arm
+        motion, CroMoGen jointly optimizes both for greater adherence to the source demonstration. We evaluate CroMoGen on four mobile
+        manipulation task families in RoboCasa and ParaHome. In the challenging human-to-robot setting, CroMoGen reaches a 56%
+        demonstration-generation success rate, exceeding the strongest baseline by 37 percentage points.</p>
     </div>
   </div>
 </section>
